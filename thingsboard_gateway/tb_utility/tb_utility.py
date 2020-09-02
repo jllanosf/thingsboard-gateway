@@ -76,9 +76,11 @@ class TBUtility:
     def check_and_import(extension_type, module_name):
         if TBUtility.loaded_extensions.get(extension_type + module_name) is None:
             if system() == "Windows":
+                log.debug("Windows OS")
                 extensions_paths = (path.abspath(path.dirname(path.dirname(__file__)) + '/connectors/'.replace('/', path.sep) + extension_type.lower()),
                                     path.abspath(path.dirname(path.dirname(__file__)) + '/extensions/'.replace('/', path.sep) + extension_type.lower()))
             else:
+                log.debug("Linux OS")
                 extensions_paths = (path.abspath(path.dirname(path.dirname(__file__)) + '/connectors/'.replace('/', path.sep) + extension_type.lower()),
                                     '/thingsboard_gateway/extensions/'.replace('/', path.sep) + extension_type.lower(),
                                     path.abspath(path.dirname(path.dirname(__file__)) + '/extensions/'.replace('/', path.sep) + extension_type.lower()))
