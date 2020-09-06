@@ -329,7 +329,8 @@ class TBGatewayService:
             if item.get("ts") is None:
                 telemetry = {**telemetry, **item}
             else:
-                telemetry_with_ts.append({"ts": item["ts"], "values": {**item["values"]}})
+                item_values = item["values"]
+                telemetry_with_ts.append({"ts": item["ts"], "values": {item_values}})
         if telemetry_with_ts:
             data["telemetry"] = telemetry_with_ts
         else:
